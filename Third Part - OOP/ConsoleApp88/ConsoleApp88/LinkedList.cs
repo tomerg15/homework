@@ -9,11 +9,15 @@ namespace ConsoleApp88
     {
         private Node<int> head;
         private Node<int> end;
+        private Node<int> max;
+        private Node<int> min;
         private bool flag_first_node = true;
 
         public LinkedList(Node<int> head)
         {
             this.head = head;
+            max = head;
+            min = head;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -28,16 +32,25 @@ namespace ConsoleApp88
 
         public void Append(int value) //O(1)
         {
+            Node<int> temp = new Node<int>(value);
             if (flag_first_node == true)
             {
-                head.SetNext(new Node<int>(value));
+                head.SetNext(temp);
                 end = head.GetNext();
                 flag_first_node = false;
             }
             else
             {
-                end.SetNext(new Node<int>(value));
+                end.SetNext(temp);
                 end = end.GetNext();
+            }
+            if (temp.GetValue() > max.GetValue())
+            {
+                max = temp;
+            }
+            if (temp.GetValue() < min.GetValue())
+            {
+                min = temp;
             }
         }
 
@@ -45,6 +58,14 @@ namespace ConsoleApp88
         {
             Node<int> newhead = new Node<int>(value, head);
             head = newhead;
+            if (newhead.GetValue() > max.GetValue())
+            {
+                max = newhead;
+            }
+            if (newhead.GetValue() < min.GetValue())
+            {
+                min = newhead;
+            }
         }
 
         public int Pop()
@@ -114,31 +135,11 @@ namespace ConsoleApp88
 
         public Node<int> GetMaxNode()
         {
-            Node<int> lst = head;
-            Node<int> max = new Node<int>(lst.GetValue(),null);
-            while (lst != null)
-            {
-                if (lst.GetValue() > max.GetValue())
-                {
-                    max = lst;
-                }
-                lst = lst.GetNext();
-            }
             return max;
         }
 
         public Node<int> GetMinNode()
         {
-            Node<int> lst = head;
-            Node<int> min = new Node<int>(lst.GetValue(), null);
-            while (lst != null)
-            {
-                if (lst.GetValue() < min.GetValue())
-                {
-                    min = lst;
-                }
-                lst = lst.GetNext();
-            }
             return min;
         }
         public override string ToString()

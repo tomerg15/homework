@@ -9,11 +9,12 @@ namespace ConsoleApp88
             //checking functions: all works fine! :D
             Node<int> node1 = new Node<int>(2);
             LinkedList<Node<int>> head = new LinkedList<Node<int>>(node1);
-            Console.WriteLine(head);
             head.Append(3);
             head.Append(4);
             head.Prepend(1);
             head.Sort();
+            Console.WriteLine(head.GetMaxNode());
+            Console.WriteLine(head.GetMinNode());
             head.Unqueue();
             head.Pop();
             Console.WriteLine(head);
