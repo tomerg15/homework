@@ -77,6 +77,32 @@ namespace ConsoleApp88
             }
             int value_of_last = lst.GetNext().GetValue();
             lst.SetNext(null);
+            if (value_of_last == max.GetValue())
+            {
+                max = head;
+                Node<int> temp = head;
+                while (temp.GetNext() != null)
+                {
+                    temp = temp.GetNext();
+                    if (temp.GetValue() > max.GetValue())
+                    {
+                        max = temp;
+                    }
+                }
+            }
+            if (value_of_last == min.GetValue())
+            {
+                min = head;
+                Node<int> temp = head;
+                while (temp.GetNext() != null)
+                {
+                    temp = temp.GetNext();
+                    if (temp.GetValue() < min.GetValue())
+                    {
+                        min = temp;
+                    }
+                }
+            }
             return value_of_last;
         }
 
@@ -84,6 +110,32 @@ namespace ConsoleApp88
         {
             int value_of_first = head.GetValue();
             head = head.GetNext();
+            if (value_of_first == max.GetValue())
+            {
+                max = head;
+                Node<int> temp = head;
+                while (temp.GetNext() != null)
+                {
+                    temp = temp.GetNext();
+                    if (temp.GetValue() > max.GetValue())
+                    {
+                        max = temp;
+                    }
+                }
+            }
+            if (value_of_first == min.GetValue())
+            {
+                min = head;
+                Node<int> temp = head;
+                while (temp.GetNext() != null)
+                {
+                    temp = temp.GetNext();
+                    if (temp.GetValue() < min.GetValue())
+                    {
+                        min = temp;
+                    }
+                }
+            }
             return value_of_first;
         }
 

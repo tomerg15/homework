@@ -12,11 +12,12 @@ namespace ConsoleApp88
             head.Append(3);
             head.Append(4);
             head.Prepend(1);
+            head.Prepend(0);
             head.Sort();
-            Console.WriteLine(head.GetMaxNode());
-            Console.WriteLine(head.GetMinNode());
             head.Unqueue();
             head.Pop();
+            Console.WriteLine(head.GetMaxNode());
+            Console.WriteLine(head.GetMinNode());
             Console.WriteLine(head);
             NumericalExpression<long> number = new NumericalExpression<long>(42548);
             Console.WriteLine(number);
